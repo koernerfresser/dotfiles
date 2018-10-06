@@ -1,0 +1,30 @@
+# alias cat='ccat'
+alias g='lab'
+alias py2='python2'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
+alias onedrive-resync='systemctl --user stop onedrive && onedrive --resync && systemctl --user start onedrive'
+alias pwsh='pwsh-preview'
+alias insync='TERM=linux insync-headless'
+alias todoist='todoist --color'
+alias tist='todoist'
+alias tt='todoist list --filter "(overdue | today)"'
+alias hexedit='hexedit --color'
+
+# alias cat='bat'
+alias ping='prettyping --nolegend'
+alias ndu='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
+
+alias cmseek='cd ~/prg/CMSeeK/ && python3 cmseek.py'
+
+alias music='ncmpcpp'
+
+alias start-fritz-vpn='sudo systemctl start vpnc@fritz'
+alias stop-fritz-vpn='sudo systemctl stop vpnc@fritz'
+
+alias gl='GTK_THEME=Materia-light-compact'
+
+alias qalc='/usr/bin/qalc'
+
+# vi: ft=sh

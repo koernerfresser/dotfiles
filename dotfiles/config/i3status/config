@@ -1,0 +1,114 @@
+# order += 'do_not_disturb'
+order += 'volume_status'
+# order += 'mpris'
+order += 'battery_level'
+order += 'sysdata cpu'
+order += 'sysdata mem'
+order += 'diskdata'
+order += 'wifi'
+order += 'net_iplist'
+# order += 'check_tcp'
+order += 'systemd networkd'
+order += 'systemd_user onedrive'
+order += 'systemd_user locker'
+order += 'systemd nftables'
+order += 'systemd docker'
+order += 'systemd wpa_supplicant'
+order += 'whatismyip'
+order += 'clock'
+
+general {
+  color = '#EEFFFF'
+  color_good = '#C3E88D'
+  color_bad = '#F071778'
+  color_degraded = '#FFCB6B'
+}
+
+battery_level {
+  format = '⚡{percent}% {time_remaining}'
+  hide_when_full = true
+  hide_seconds = true
+  measurement_mode = 'acpi'
+}
+
+sysdata cpu {
+  format = '[\?color=cpu  {cpu_used_percent}% - {cpu_temp}ºC]'
+  cache_timeout = 3
+}
+
+sysdata mem {
+  format = '[\?color=mem  {mem_used}/{mem_total}]'
+}
+
+diskdata {
+  format = ' {used}/{total_space}'
+  cache_timeout = 1
+}
+
+wifi {
+  format = ' {signal_percent} {bitrate} {signal_dbm}| down'
+}
+
+net_iplist {
+  cache_timeout = 10
+  format = ' {format_iface}'
+  format_iface = '{iface}: {ip4}'
+  iface_blacklist = ['lo','mordor','docker*','eno1']
+}
+
+check_tcp {
+  host = '10.11.12.61'
+  format = 'i {state}'
+}
+
+whatismyip {
+  mode = status
+  cache_timeout = 3
+}
+
+clock {
+  format = '{Europe/Berlin}'
+  format_time = '%Y-%m-%d %H:%M'
+}
+
+systemd_user onedrive {
+  unit = 'onedrive.service'
+  # format = ''
+  format = 'O'
+  on_click 3 = 'exec systemctl --user restart onedrive.service'
+}
+
+systemd_user locker {
+  unit = 'lock-timer.service'
+  format = 'L'
+  on_click 1 = 'exec systemctl --user restart lock-timer.service'
+  on_click 3 = 'exec systemctl --user stop lock-timer.service'
+}
+
+systemd nftables {
+  unit = 'nftables.service'
+  format = 'F'
+  on_click 1 = 'exec systemctl start nftables.service'
+  on_click 3 = 'exec systemctl stop nftables.service'
+}
+
+systemd docker {
+  unit = 'docker.service'
+  format = 'D'
+  on_click 1 = 'exec systemctl start docker.service'
+  on_click 3 = 'exec systemctl stop docker.service'
+}
+
+systemd networkd {
+  unit = 'systemd-networkd.service'
+  format = 'N'
+  on_click 1 = 'exec systemctl start systemd-networkd.service'
+  on_click 3 = 'exec systemctl stop systemd-networkd.service'
+}
+
+systemd wpa_supplicant {
+  unit = 'wpa_supplicant@wlp2s0b1.service'
+  format = 'W'
+  on_click 1 = 'exec systemctl start wpa_supplicant@wlp2s0b1.service'
+  on_click 3 = 'exec systemctl stop wpa_supplicant@wlp2s0b1.service'
+}

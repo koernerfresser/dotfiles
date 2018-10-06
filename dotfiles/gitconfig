@@ -1,0 +1,86 @@
+[user]
+	name = koernerfresser
+	email = sabotagehase@gmail.com
+[core]
+	autocrlf = false
+        editor = nvim
+	excludesfile = ~/.config/git/ignore
+[alias]
+	up = pull --rebase --autostash
+	
+	prune = fetch --prune
+	# Because I constantly forget how to do this
+	# https://git-scm.com/docs/git-fetch#git-fetch--p
+
+	stash-all = stash save --include-untracked
+	# We wanna grab those pesky un-added files!
+	# https://git-scm.com/docs/git-stash
+        a = !"git add -u; git add ."
+        c = commit -am
+        cs = commit -S -am
+        co = checkout
+        contributors = shortlog -n -s
+        d = "!git diff --patch-with-stat --color $@ | diff-so-fancy"
+        df = diff --patch-with-stat --color --color-words --abbrev
+        fc = "!f() { git log --pretty=format:'* %C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%cn>%Creset' --decorate --date=relative --grep=$1; }; f"
+        fs = "!f() { git log --pretty=format:'* %C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%cn>%Creset' --decorate --date=relative -S$1; }; f"
+        lg = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        s = status -s
+        sclone = clone --depth 1
+        undo = reset HEAD~1
+        remotes = remote -v
+
+[push]
+	followTags = true
+	# Because I get sick of telling git to do it manually
+	# https://git-scm.com/docs/git-config#git-config-pushfollowTags
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential "https://source.developers.google.com"]
+	useHttpPath = true
+#[diff]
+#	tool = bc
+#[difftool "bc"]
+#	path = c:/Program Files (x86)/Beyond Compare 4/bcomp.exe
+#[merge]
+#	tool = bc
+#[mergetool "bc"]
+#	path = c:/Program Files (x86)/Beyond Compare 4/bcomp.exe
+[color]
+    ui = always
+
+[color "diff"]
+    meta = yellow bold
+    commit = cyan bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFX
+    show = diff-so-fancy | less --tabs=4 -RFX
+
+[gpg]
+    program = gpg2
+[diff]
+	tool = meld

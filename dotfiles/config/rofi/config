@@ -1,0 +1,16 @@
+rofi.theme:		~/.config/rofi/oxide.rasi
+rofi.combi-modi:	window,drun,ssh,run
+rofi.modi:		combi,drun,window,run,ssh
+rofi.font:		IBM Plex Sans 10
+rofi.show-icons:	true
+rofi.lines:		12
+rofi.display-window:    Window
+rofi.display-drun:      Search
+rofi.m:                 primary
+
+! Terminal to use
+rofi.terminal:          rofi-sensible-terminal
+! Ssh client to use
+rofi.ssh-client:        ssh
+! Ssh command to execute
+rofi.ssh-command:       {terminal} -e {ssh-client} {host}

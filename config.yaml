@@ -1,6 +1,179 @@
+actions:
+  pre:
+    tpm-install: test -d ~/.tmux/plugins/tpm || (git clone https://github.com/tmux-plugins/tpm
+      ~/.tmux/plugins/tpm)
+    vim-plug-install: test -e ~/.local/share/nvim/site/autoload/plug.vim || (curl
+      -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+    zplug-install: test -d ~/zplug || (git clone https://github.com/zplug/zplug.git
+      ~/.zplug)
+  vim-plug: vim +PlugInstall +qall
+  zplug: zplug install
 config:
   backup: true
+  banner: false
   create: true
   dotpath: dotfiles
+  keepdot: false
+  link_by_default: true
+  longkey: true
+  showdiff: false
+  workdir: ~/.config/dotdrop
 dotfiles:
+  f_aliases:
+    dst: ~/.aliases
+    link: true
+    src: aliases
+  f_aliases_private:
+    dst: ~/.aliases_private
+    link: true
+    src: aliases_private
+  f_bash_profile:
+    dst: ~/.bash_profile
+    link: true
+    src: bash_profile
+  f_bash_prompt:
+    dst: ~/.bash_prompt
+    link: true
+    src: bash_prompt
+  f_bashrc:
+    dst: ~/.bashrc
+    link: true
+    src: bashrc
+  f_config_alacritty_alacritty.yml:
+    dst: ~/.config/alacritty/alacritty.yml
+    link: true
+    src: config/alacritty/alacritty.yml
+  f_config_chrome-dev-flags.conf:
+    dst: ~/.config/chrome-dev-flags.conf
+    link: true
+    src: config/chrome-dev-flags.conf
+  f_config_compton_compton.conf:
+    dst: ~/.config/compton/compton.conf
+    link: true
+    src: config/compton/compton.conf
+  f_config_dunst_dunstrc:
+    dst: ~/.config/dunst/dunstrc
+    link: true
+    src: config/dunst/dunstrc
+  f_config_git_ignore:
+    dst: ~/.config/git/ignore
+    link: true
+    src: config/git/ignore
+  f_config_gtk-3.0_settings.ini:
+    dst: ~/.config/gtk-3.0/settings.ini
+    link: true
+    src: config/gtk-3.0/settings.ini
+  f_config_htop_htoprc:
+    dst: ~/.config/htop/htoprc
+    link: true
+    src: config/htop/htoprc
+  f_config_i3_config:
+    dst: ~/.config/i3/config
+    link: true
+    src: config/i3/config
+  f_config_i3_toggle-touchpad:
+    dst: ~/.config/i3/toggle-touchpad
+    link: true
+    src: config/i3/toggle-touchpad
+  f_config_i3status_config:
+    dst: ~/.config/i3status/config
+    link: true
+    src: config/i3status/config
+  f_config_nvim_init.vim:
+    actions:
+    - vim-plug-install
+    - vim-plug
+    dst: ~/.config/nvim/init.vim
+    link: true
+    src: config/nvim/init.vim
+  f_config_rofi_config:
+    dst: ~/.config/rofi/config
+    link: true
+    src: config/rofi/config
+  f_config_rofi_oxide.rasi:
+    dst: ~/.config/rofi/oxide.rasi
+    link: true
+    src: config/rofi/oxide.rasi
+  f_dircolors:
+    dst: ~/.dircolors
+    link: true
+    src: dircolors
+  f_exports:
+    dst: ~/.exports
+    link: true
+    src: exports
+  f_functions:
+    dst: ~/.functions
+    link: true
+    src: functions
+  f_gitconfig:
+    dst: ~/.gitconfig
+    link: true
+    src: gitconfig
+  f_tmux.conf:
+    actions:
+    - tpm-install
+    dst: ~/.tmux.conf
+    link: true
+    src: tmux.conf
+  f_wgetrc:
+    dst: ~/.wgetrc
+    link: true
+    src: wgetrc
+  f_xresources:
+    dst: ~/.Xresources
+    link: true
+    src: Xresources
+  f_xsessionrc:
+    dst: ~/.xsessionrc
+    link: true
+    src: xsessionrc
+  f_zplug_conf:
+    actions:
+    - zplug-install
+    - zplug
+    dst: ~/.zplug_conf
+    link: true
+    src: zplug_conf
+  f_zshrc:
+    dst: ~/.zshrc
+    link: true
+    src: zshrc
 profiles:
+  common:
+    dotfiles:
+    - f_dircolors
+    - f_wgetrc
+    - f_config_htop_htoprc
+    - f_bashrc
+    - f_bash_profile
+    - f_bash_prompt
+    - f_exports
+    - f_aliases
+    - f_functions
+    - f_gitconfig
+    - f_config_git_ignore
+    - f_config_nvim_init.vim
+    - f_tmux.conf
+    - f_zshrc
+    - f_zplug_conf
+  gothmog:
+    dotfiles:
+    - f_aliases_private
+    - f_config_alacritty_alacritty.yml
+    - f_config_chrome-dev-flags.conf
+    include:
+    - common
+    - i3
+  i3:
+    dotfiles:
+    - f_config_i3_config
+    - f_config_i3status_config
+    - f_xresources
+    - f_xsessionrc
+    - f_config_gtk-3.0_settings.ini
+    - f_config_rofi_config
+    - f_config_rofi_oxide.rasi
+    - f_config_i3_toggle-touchpad
+    - f_config_compton_compton.conf
+    - f_config_dunst_dunstrc

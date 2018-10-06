@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+function apt-clean() {
+    sudo apt-get clean
+    sudo apt-get autoclean
+    sudo apt-get autoremove
+}
+
+function mkd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+function readme() {
+    for readme in {readme,README}.{md,MD,markdown,txt,TXT,mkd}; do
+        if [[ -f "$readme" ]]; then
+            less $readme
+        fi
+    done
+}
+
+# repace symlink
+function rs() {
+    \cp --remove-destination "$(readlink -f "$@")" "$@"
+    # cp --remove-destination path/to/symlink(:A) path/to/symlink
+}
+
+# Developer functions.
+function phpserver() {
+    local ip=localhost
+    local port="${1:-4000}"
+    php -S "${ip}:${port}"
+}
+
+# Allow Ctrl-z to toggle between suspend and resume
+function Resume {
+    fg
+    zle push-input
+    BUFFER=""
+    zle accept-line
+}
+zle -N Resume
+bindkey "^Z" Resume

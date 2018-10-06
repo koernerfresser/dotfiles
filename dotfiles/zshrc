@@ -1,0 +1,54 @@
+fpath=(~/.zsh_completion $fpath)
+
+# Disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Disable marking untracked files under VCS as dirty.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# History.
+HIST_STAMPS="yyyy-mm-dd"
+
+# Environment variables.
+source ~/.exports
+
+# Oh My Zsh time!
+# source $ZSH/oh-my-zsh.sh
+
+# zplug time!
+source $ZPLUG_HOME/init.zsh
+source ~/.zplug_conf
+
+# User config.
+# source ~/.zsh/setopt.zsh
+
+# Aliases.
+source ~/.aliases
+source ~/.aliases_private
+
+# Functions.
+source ~/.functions
+source ~/.functions_private
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd V edit-command-line
+
+# Manage SSH with Keychain.
+#if [ -x "$(command -v keychain)" ]; then
+#    eval `keychain --eval --quiet id_rsa_github id_rsa_gitlab`
+#fi
+
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+zplug load
+
+source /usr/share/nvm/init-nvm.sh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="/home/michi/.sdkman"
+# [[ -s "/home/michi/.sdkman/bin/sdkman-init.sh" ]] && source "/home/michi/.sdkman/bin/sdkman-init.sh"
+

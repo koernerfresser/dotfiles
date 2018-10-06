@@ -1,0 +1,469 @@
+# font for window titles and bar
+font pango:IBM Plex Sans 8
+
+# use win key
+set $mod Mod4
+
+# use these keys for focus, movement, and resize directions
+set $left   j
+set $down   k
+set $up     l
+set $right  semicolon
+
+# define names for workspaces
+set $ws1    "1:  "
+set $ws2    "2:  "
+set $ws3    "3:  "
+set $ws4    "4:  "
+set $ws5    "5:  "
+set $ws6    "6:  "
+set $ws7    "7:  "
+set $ws8    "8:  "
+set $ws9    "9:  "
+set $ws10   "10:  "
+set $ws11   "11:  "
+set $ws21   "21: HDMI 1"
+set $ws22   "22: HMDI 2"
+set $ws23   "23: VGA 1"
+set $ws24   "24: VGA 2"
+
+# which screen
+set $primary    LVDS1
+workspace $ws1  output $primary
+workspace $ws2  output $primary
+workspace $ws3  output $primary
+workspace $ws4  output $primary
+workspace $ws5  output $primary
+workspace $ws6  output $primary
+workspace $ws7  output $primary
+workspace $ws8  output $primary
+workspace $ws9  output $primary
+workspace $ws10 output $primary
+workspace $ws11 output $primary
+workspace $ws21 output HDMI1
+workspace $ws22 output HDMI1
+workspace $ws23 output VGA1
+workspace $ws24 output VGA1
+
+# use $mod+Mouse to drag floating windows to their wanted position
+floating_modifier $mod
+
+# control focused window when follows the mouse movements
+focus_follows_mouse no
+
+# window border settings
+smart_borders           on
+default_border          pixel 1
+default_floating_border pixel 1
+
+# hiding borders adjacent to the screen edges
+hide_edge_borders none
+
+# set popups during fullscreen mode
+popup_during_fullscreen smart
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# start a program launcher
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# switching window with win+tab
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+slash move scratchpad
+
+# show the next scratchpad window or hide the focused scratchpad window
+bindsym $mod+slash scratchpad show
+
+# move focused floating window to the center of all outputs
+bindsym $mod+Shift+h move absolute position center
+
+# move focused floating window to the current position of the cursor
+bindsym $mod+Shift+m move position mouse
+
+# set a window to stick to the glass
+bindsym $mod+Shift+s sticky toggle
+
+# shortcut to change window border
+# bindsym $mod# +t border normal    0
+# bindsym $mod+z border pixel     1
+# bindsym $mod+u border none
+
+#jump to urgent
+bindsym $mod+x [urgent=latest] focus
+
+# jump marks
+bindsym $mod+Mod1+a [con_mark="a"] focus
+bindsym $mod+Mod1+s [con_mark="s"] focus
+bindsym $mod+Mod1+d [con_mark="d"] focus
+bindsym $mod+Mod1+f [con_mark="f"] focus
+bindsym $mod+Mod1+Shift+a mark a
+bindsym $mod+Mod1+Shift+s mark s
+bindsym $mod+Mod1+Shift+d mark d
+bindsym $mod+Mod1+Shift+f mark f
+
+# youtube sticky
+bindsym $mod+u exec python ~/.config/i3/youtube.py
+bindsym $mod+y nop
+bindsym $mod+Shift+y nop
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+minus workspace $ws11
+bindsym $mod+Ctrl+1 workspace $ws21
+bindsym $mod+Ctrl+2 workspace $ws22
+bindsym $mod+Ctrl+3 workspace $ws23
+bindsym $mod+Ctrl+4 workspace $ws24
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+minus move container to workspace $ws11
+bindsym $mod+Ctrl+Shift+1 move container to workspace $ws21
+bindsym $mod+Ctrl+Shift+2 move container to workspace $ws22
+bindsym $mod+Ctrl+Shift+3 move container to workspace $ws23
+bindsym $mod+Ctrl+Shift+4 move container to workspace $ws24
+
+# shortcut applications
+bindsym $mod+F1 worlspace $ws1; exec alacritty
+bindsym $mod+F2 workspace $ws2; exec subl3
+bindsym $mod+F3 workspace $ws3; exec google-chrome-unstable
+bindsym $mod+F4 workspace $ws4; exec nautilus
+bindsym $mod+F5 workspace $ws5; exec evince
+bindsym $mod+F6 workspace $ws6; exec audacious
+bindsym $mod+F7 workspace $ws7; exec gcolor2
+bindsym $mod+F8 workspace $ws8; exec telegram
+bindsym $mod+F9 workspace $ws9; exec go-for-it
+bindsym Print                   exec --no-startup-id gnome-screenshot
+
+# volume
+bindsym XF86AudioLowerVolume    exec --no-startup-id "amixer -q -D pulse sset Master 5%- unmute; py3-cmd refresh volume_status"
+bindsym XF86AudioRaiseVolume    exec --no-startup-id "amixer -q -D pulse sset Master 5%+ unmute; py3-cmd refresh volume_status"
+bindsym XF86AudioMute           exec --no-startup-id "amixer -q -D pulse sset Master toggle; py3-cmd refresh volume_status"
+
+# Media player controls
+bindsym XF86AudioPlay           exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext           exec playerctl next
+bindsym XF86AudioPrev           exec playerctl previous
+
+# brightness control
+bindsym XF86MonBrightnessUp 		exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown 		exec xbacklight -dec 10
+bindsym Shift+XF86MonBrightnessDown	exec xbacklight -dec 5
+bindsym Shift+XF86MonBrightnessUp 	exec xbacklight -inc 5
+
+# disable touchpad
+bindsym XF86TouchpadToggle		exec ~/.config/i3/toggle-touchpad
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# resize window
+bindsym $mod+r mode "  "
+mode "  " {
+    # pressing left and up will shrink the window's width and height
+    # pressing right and down will grow the window's width and height
+    bindsym $left   resize shrink width 10 px or 10 ppt
+    bindsym $down   resize grow height 10 px or 10 ppt
+    bindsym $up     resize shrink height 10 px or 10 ppt
+    bindsym $right  resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left    resize shrink width 10 px or 10 ppt
+    bindsym Down    resize grow height 10 px or 10 ppt
+    bindsym Up      resize shrink height 10 px or 10 ppt
+    bindsym Right   resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or win+r
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym Mod4+m focus floating; mode "  "
+mode "  " {
+    bindsym $up move up 20px
+    bindsym $left move left 20px
+    bindsym $down move down 20px
+    bindsym $right move right 20px
+
+    bindsym Up move up 20px
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Right move right 20px
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Mod4+m mode "default"
+}
+
+# set $Locker i3lock-fancy && sleep 1
+# set $Locker i3lock -foel --radius=100
+# set $Locker physlock
+set $Locker xset s activate
+bindsym $mod+Pause mode "$mode_system"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+Shift+p mode "$mode_display"
+
+# titlebar
+for_window [class=".*"] title_format "   %title"
+
+# set specific windows to floating mode
+for_window [window_role="app"]                      floating enable
+for_window [window_role="pop-up"]                   floating enable
+for_window [window_role="task_dialog"]              floating enable
+for_window [title="Preferences$"]                   floating enable
+for_window [class="Galculator"]                     floating enable
+for_window [class="Gcolor2"]                        floating enable
+for_window [class="Gkamus"]                         floating enable
+for_window [class="Go-for-it"]                      floating enable
+for_window [class="Lightdm-gtk-greeter-settings"]   floating enable
+for_window [class="Lxappearance"]                   floating enable
+for_window [class="Menu"]                           floating enable
+for_window [class="Software-properties-gtk"]        floating enable
+for_window [class="Gnome-calculator"]               floating enable
+for_window [class="Enpass-Desktop"]                 floating enable
+for_window [class="Mainwindow.py"]                  floating enable
+for_window [class="alacritty-floating"]             floating enable
+for_window [class="Anki"]                           floating enable
+for_window [class="Nm-connection-editor"]	    floating enable
+for_window [class="Indicator-kdeconnect-settings"]  floating enable
+for_window [class="jetbrains-toolbox"]              floating enable
+for_window [class="Gucharmap"]                      floating enable
+
+for_window [class="Uzbl-core"] focus child, layout tabbed, focus
+for_window [class="Uzbl-browser"] focus child, layout tabbed, focus
+
+# assign program to workspace
+# assign [class="Alacritty"]        → $ws1
+assign [class="terminal"]           → $ws1
+assign [class="Sublime"]            → $ws2
+assign [class="Subl3"]              → $ws2
+assign [class="Code"]               → $ws2
+assign [class="Atom"]               → $ws2
+assign [class="Chromium"]           → $ws3
+assign [class="Firefox"]            → $ws3
+assign [class="Firefox Developer Edition"]  → $ws3
+assign [class="Authy"]              → $ws3
+assign [class="Nautilus"]           → $ws4
+assign [class="Evince"]             → $ws5
+assign [class="ghostwriter"]        → $ws5
+assign [class="libreoffice"]        → $ws5
+assign [class="Audacious"]          → $ws6
+assign [class="Google Play Music Desktop Player"]   → $ws6
+assign [class="vlc"]                → $ws6
+assign [class="Spotify"]			→ $ws6
+assign [class="Gimp"]               → $ws7
+assign [class="Inkscape"]           → $ws7
+assign [class="discord"]            → $ws8
+assign [class="Hexchat"]            → $ws8
+assign [class="Telegram"]           → $ws8
+assign [class="Upwork"]             → $ws8
+assign [class="Galculator"]         → $ws9
+assign [class="Gnome-font-viewer"]  → $ws9
+assign [class="Go-for-it"]          → $ws9
+assign [class="Keepassx"]           → $ws9
+assign [class="Transmission-gtk"]   → $ws9
+assign [class="Bleachbit"]          → $ws10
+assign [class="Pamac-updater"]      → $ws10
+assign [class="Pamac-manager"]      → $ws10
+assign [class="Bum"]                → $ws10
+assign [class="Dconf-editor"]       → $ws10
+assign [class="Gnome-disks"]        → $ws10
+assign [class="GParted"]            → $ws10
+assign [class="Grub-customizer"]    → $ws10
+assign [class="Hardinfo"]           → $ws10
+assign [class="Lxappearance"]       → $ws10
+assign [class="Lxinput"]            → $ws10
+assign [class="Lxrandr"]            → $ws10
+assign [class="Lxtask"]             → $ws10
+assign [class="Menu"]               → $ws10
+assign [class="Obconf"]             → $ws10
+assign [class="Lightdm-gtk-greeter-settings"]   → $ws10
+assign [class="Software-properties-gtk"]        → $ws10
+assign [class="Vmware"]				→ $ws11
+assign [class="Qemu-system-x86_64"]	→ $ws11
+# assign [class="Remmina"]			→ $ws11
+
+# colors
+set $base00 #212121
+set $base01 #303030
+set $base02 #353535
+set $base03 #4A4A4A
+set $base04 #B2CCD6
+set $base05 #EEFFFF
+set $base06 #EEFFFF
+set $base07 #FFFFFF
+set $base08 #F07178
+set $base09 #F78C6C
+set $base0A #FFCB6B
+set $base0B #C3E88D
+set $base0C #89DDFF
+set $base0D #82AAFF
+set $base0E #C792EA
+set $base0F #FF5370
+
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base0D $base0D $base00 $base04 $base0D
+client.focused_inactive $base00 $base00 $base05 $base03 $base01
+client.unfocused        $base01 $base01 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+# start i3bar to display a workspace bar
+bar {
+    output                  primary
+    status_command          py3status --include ~/.config/i3status
+    bindsym button4         nop
+    bindsym button5         nop
+    position                bottom
+    tray_output             primary
+    tray_padding            3
+    separator_symbol        "·"
+    workspace_buttons       yes
+    strip_workspace_numbers yes
+
+    colors {
+        background $base00
+        separator  $base03
+        statusline $base05
+
+        # State             Border  BG      Text
+        focused_workspace   $base0D $base0D $base00
+        active_workspace    $base03 $base03 $base00
+        inactive_workspace  $base00 $base00 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base0A $base0A $base00
+    }
+}
+
+# i3-gaps
+#smart_gaps on
+#gaps inner 8
+#gaps outer 2
+
+# startup applications
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec --no-startup-id feh --bg-fill ~/.wallpaper/cherry-tree.png
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+
+exec --no-startup-id unclutter
+# exec --no-startup-id udiskie -sA
+
+exec --no-startup-id /opt/Enpass/bin/runenpass.sh startWithTray
+exec --no-startup-id jetbrains-toolbox --minimize
+
+exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1
+
+exec --no-startup-id setxkbmap eu -option 'caps:ctrl_modifier'
+exec --no-startup-id xcape -e "Caps_Lock=Escape"
+
+exec --no-startup-id networkd-notify
+exec --no-startup-id systemctl --user start lock-timer.service xss-lock.service redshift.service
+
+exec_always /home/$USER/.config/i3/i3-init
