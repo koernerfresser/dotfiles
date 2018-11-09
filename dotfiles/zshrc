@@ -1,7 +1,7 @@
 fpath=(~/.zsh_completion $fpath)
 
 # Disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Disable marking untracked files under VCS as dirty.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -11,9 +11,6 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Environment variables.
 source ~/.exports
-
-# Oh My Zsh time!
-# source $ZSH/oh-my-zsh.sh
 
 # zplug time!
 source $ZPLUG_HOME/init.zsh
@@ -44,9 +41,15 @@ eval "$(pyenv virtualenv-init -)"
 
 zplug load
 
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
+
 source /usr/share/nvm/init-nvm.sh
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+source ~/.tzvt_config
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/michi/.sdkman"

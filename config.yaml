@@ -7,7 +7,7 @@ actions:
     zplug-install: test -d ~/zplug || (git clone https://github.com/zplug/zplug.git
       ~/.zplug)
   vim-plug: vim +PlugInstall +qall
-  zplug: zplug install
+  zplug: source ~/.zplug/init.zsh; source ~/.zplug_conf; zplug install
 config:
   backup: true
   banner: false
@@ -27,6 +27,10 @@ dotfiles:
     dst: ~/.aliases_private
     link: true
     src: aliases_private
+  f_asdfrc:
+    dst: ~/.asdfrc
+    link: true
+    src: asdfrc
   f_bash_profile:
     dst: ~/.bash_profile
     link: true
@@ -94,6 +98,10 @@ dotfiles:
     dst: ~/.config/rofi/oxide.rasi
     link: true
     src: config/rofi/oxide.rasi
+  f_config_sway_config:
+    dst: ~/.config/sway/config
+    link: true
+    src: config/sway/config
   f_dircolors:
     dst: ~/.dircolors
     link: true
@@ -116,6 +124,14 @@ dotfiles:
     dst: ~/.tmux.conf
     link: true
     src: tmux.conf
+  f_tzvt_config:
+    dst: ~/.tzvt_config
+    link: true
+    src: tzvt_config
+  f_urlview:
+    dst: ~/.urlview
+    link: true
+    src: urlview
   f_wgetrc:
     dst: ~/.wgetrc
     link: true
@@ -162,6 +178,10 @@ profiles:
     - f_aliases_private
     - f_config_alacritty_alacritty.yml
     - f_config_chrome-dev-flags.conf
+    - f_urlview
+    - f_tzvt_config
+    - f_asdfrc
+    - f_config_sway_config
     include:
     - common
     - i3

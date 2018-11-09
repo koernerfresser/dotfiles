@@ -5,7 +5,7 @@ if [[ $LANG = '' ]]; then
 	export LANG=en_US.UTF-8
 fi
 export EDITOR="nvim"
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 export TERMINAL="alacritty"
 export BASE16_SHELL="$HOME/.zplug/repos/chriskempson/base16-shell"
 #export PROMPT_EOL_MARK=""
@@ -28,6 +28,12 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # QT
 #export QT_STYLE_OVERRIDE=gtk
 export QT_SELECT=qt5
+
+# progress
+export PROGRESS_ARGS='-M --ignore-file ~/.xsession-errors'
+
+
+# export MSBuildSDKsPath=$(asdf where dotnet-core)$(dotnet --version)/sdk/$(dotnet --version)/Sdks
 
 # Highlighting inside manpages and elsewhere.
 export LESS_TERMCAP_mb=$'\e[1;31m'          # start blinking

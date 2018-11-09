@@ -4,7 +4,7 @@ alias py2='python2'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
-alias onedrive-resync='systemctl --user stop onedrive && onedrive --resync && systemctl --user start onedrive'
+alias onedrive-resync='systemctl --user stop onedrive && onedrive --synchronize --resync && systemctl --user start onedrive'
 alias pwsh='pwsh-preview'
 alias insync='TERM=linux insync-headless'
 alias todoist='todoist --color'
@@ -22,9 +22,12 @@ alias music='ncmpcpp'
 
 alias start-fritz-vpn='sudo systemctl start vpnc@fritz'
 alias stop-fritz-vpn='sudo systemctl stop vpnc@fritz'
+alias edit-net='sudo nvim /etc/systemd/network/10-eno1_indisoft.network; sudo systemctl restart systemd-networkd'
 
 alias gl='GTK_THEME=Materia-light-compact'
 
 alias qalc='/usr/bin/qalc'
+
+alias pass='gopass'
 
 # vi: ft=sh

@@ -1,15 +1,22 @@
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "robbyrussell/oh-my-zsh", use:"lib/{misc,history,completion,clipboard,grep,termsupport}.zsh"
+# zplug "~/.zplug/repos/robbyrussell/oh-my-zsh/lib", from:local, use:"{misc,history,completion,clipboard,grep,termsupport}.zsh"
+zplug "plugins/asdf", from:oh-my-zsh
+zplug "plugins/systemd", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/vscode", from:oh-my-zsh
+zplug "plugins/tmuxinator", from:oh-my-zsh
+# zplug "plugins/common-aliases", from:oh-my-zsh
 # zplug "plugins/git", from:oh-my-zsh
 # zplug "plugins/archive", from:oh-my-zsh
 # zplug "plugins/archlinux", from:oh-my-zsh
 # zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "robbyrussell/oh-my-zsh", use:"lib/{misc,history,completion,clipboard,grep,termsupport}.zsh"
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-
-zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"
+zplug "zsh-users/zaw"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:2
 
 zplug "supercrabtree/k"
 zplug "rupa/z", use:"z.sh"
@@ -18,8 +25,11 @@ zplug "junegunn/fzf", use:"shell/*.zsh"
 zplug "MikeDacre/tmux-zsh-vim-titles"
 
 # Load theme file
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+
+### config
 SPACESHIP_VI_MODE_SHOW=false
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 zplug_load() {
 	# Install plugins if there are plugins that have not been installed

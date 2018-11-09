@@ -1,4 +1,6 @@
-
 export QT_STYLE_OVERRIDE=kvantum
 export GTK_CSD=0
-export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0"
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland

@@ -51,12 +51,16 @@ alias alu='apt list --upgradable'
 # arch
 alias pacrepo='sudo reflector -l 20 -f 10 --save /etc/pacman.d/mirrorlist'
 alias pacman='sudo pacman'
-#alias journalctl='sudo journalctl'
 alias pacu='noti sudo pacman -Syu'
 alias auru='yay -Syua'
 alias yayu='noti yay -Syu'
-# alias systemctl='sudo systemctl'
+
+# system
 alias se='ls /usr/bin | grep'
+alias sys='systemctl'
+alias sus='systemctl --user'
+alias sysgrep='systemctl list-units | rg -i'
+alias susgrep='systemctl --user list-units | rg -i'
 
 # bookmarks
 alias dl='cd ~/Downloads; la'
@@ -69,7 +73,6 @@ alias c='clear'
 alias ch='echo > ~/.bash_history && echo > ~/.zsh_history'
 alias cz='echo > ~/.z'
 alias e='exit'
-#alias fresh='cd . && lxterminal && quit'
 #alias gpg='gpg2'
 alias incognito='unset HISTFILE'
 alias ln='ln -s'
@@ -79,8 +82,9 @@ alias pbpaste='xclip -selection clipboard -o'
 alias copy-ssh-id='cat ~/.ssh/id_rsa.pub | pbcopy'
 alias open='xdg-open'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%S" && time cat && date "+%a, %d %b %H:%M:%S"'
-#alias weather='curl -s wttr.in/Ponorogo | sed -n "1,17p"'
 alias mutt='neomutt'
+alias calm='gcalcli calm --calendar=school --calendar=me --calendar=work --calendar=events --calendar=stuff --calendar=Family'
+alias mux='tmuxinator'
 
 # developer shortcuts
 alias git-pull-dir='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'

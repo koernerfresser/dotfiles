@@ -6,7 +6,7 @@ rofi.show-icons:	true
 rofi.lines:		12
 rofi.display-window:    Window
 rofi.display-drun:      Search
-rofi.m:                 primary
+/* rofi.m:                 primary */
 
 ! Terminal to use
 rofi.terminal:          rofi-sensible-terminal

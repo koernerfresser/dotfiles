@@ -13,7 +13,7 @@ function mkd() {
 function readme() {
     for readme in {readme,README}.{md,MD,markdown,txt,TXT,mkd}; do
         if [[ -f "$readme" ]]; then
-            less $readme
+            bat $readme
         fi
     done
 }
@@ -40,3 +40,7 @@ function Resume {
 }
 zle -N Resume
 bindkey "^Z" Resume
+
+function noti-watch() {
+    noti --pwatch $(pgrep $1)
+}

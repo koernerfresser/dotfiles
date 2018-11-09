@@ -375,7 +375,7 @@ assign [class="Gnome-disks"]        → $ws10
 assign [class="GParted"]            → $ws10
 assign [class="Grub-customizer"]    → $ws10
 assign [class="Hardinfo"]           → $ws10
-assign [class="Lxappearance"]       → $ws10
+# assign [class="Lxappearance"]       → $ws10
 assign [class="Lxinput"]            → $ws10
 assign [class="Lxrandr"]            → $ws10
 assign [class="Lxtask"]             → $ws10
@@ -415,13 +415,13 @@ client.background       $base07
 
 # start i3bar to display a workspace bar
 bar {
-    output                  primary
+    # output                  primary
     status_command          py3status --include ~/.config/i3status
     bindsym button4         nop
     bindsym button5         nop
     position                bottom
-    tray_output             primary
-    tray_padding            3
+    # tray_output             primary
+    # tray_padding            3
     separator_symbol        "·"
     workspace_buttons       yes
     strip_workspace_numbers yes
@@ -445,13 +445,24 @@ bar {
 #gaps inner 8
 #gaps outer 2
 
+# fix for gnome themes
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Materia-dark-compact'
+    gsettings set $gnome-schema icon-theme 'Papirus-Adapta-Nokto'
+    gsettings set $gnome-schema cursor-theme 'Adawaita'
+    gsettings set $gnome-schema toolbar-icons-size 'GTK_ICON_SIZE_SMALL_TOOLBAR'
+    gsettings set $gnome-schema monospace-font-name 'Hack NF 10'
+    gsettings set $gnome-schema font-name 'IBM Plex Sans 10'
+}
+
 # startup applications
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec --no-startup-id feh --bg-fill ~/.wallpaper/cherry-tree.png
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
-exec --no-startup-id xset -dpms
-exec --no-startup-id xset s 6000
+# exec --no-startup-id feh --bg-fill ~/.wallpaper/cherry-tree.png
+# exec --no-startup-id compton --config ~/.config/compton/compton.conf
+# exec --no-startup-id xset -dpms
+# exec --no-startup-id xset s 6000
 
 exec --no-startup-id unclutter
 exec --no-startup-id udiskie -sA
@@ -459,13 +470,13 @@ exec --no-startup-id udiskie -sA
 exec --no-startup-id /opt/Enpass/bin/runenpass.sh startWithTray
 exec --no-startup-id jetbrains-toolbox --minimize
 
-exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1
+# exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Natural Scrolling Enabled" 1
+# exec --no-startup-id xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1
 
-exec --no-startup-id setxkbmap eu -option 'caps:ctrl_modifier'
-exec --no-startup-id xcape -e "Caps_Lock=Escape"
+# exec --no-startup-id setxkbmap eu -option 'caps:ctrl_modifier'
+# exec --no-startup-id xcape -e "Caps_Lock=Escape"
 
 exec --no-startup-id networkd-notify
-exec --no-startup-id systemctl --user start lock-timer.service xss-lock.service redshift.service i3-scripts.service
+# exec --no-startup-id systemctl --user start lock-timer.service xss-lock.service redshift.service i3-scripts.service
 
-exec_always /home/$USER/.config/i3/i3-init
+# exec_always /home/$USER/.config/i3/i3-init

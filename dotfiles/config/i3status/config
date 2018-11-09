@@ -9,11 +9,12 @@ order += 'wifi'
 order += 'net_iplist'
 # order += 'check_tcp'
 order += 'systemd networkd'
-order += 'systemd_user onedrive'
+# order += 'systemd_user onedrive'
 order += 'systemd_user locker'
 order += 'systemd nftables'
 order += 'systemd docker'
 order += 'systemd wpa_supplicant'
+order += 'systemd iwd'
 order += 'whatismyip'
 order += 'clock'
 
@@ -46,7 +47,7 @@ diskdata {
 }
 
 wifi {
-  format = ' {signal_percent} {bitrate} {signal_dbm}| down'
+  format = ' {bitrate} {signal_dbm}| down'
 }
 
 net_iplist {
@@ -80,35 +81,42 @@ systemd_user onedrive {
 
 systemd_user locker {
   unit = 'lock-timer.service'
-  format = 'L'
+  format = 'l'
   on_click 1 = 'exec systemctl --user restart lock-timer.service'
   on_click 3 = 'exec systemctl --user stop lock-timer.service'
 }
 
 systemd nftables {
   unit = 'nftables.service'
-  format = 'F'
+  format = 'nft'
   on_click 1 = 'exec systemctl start nftables.service'
   on_click 3 = 'exec systemctl stop nftables.service'
 }
 
 systemd docker {
   unit = 'docker.service'
-  format = 'D'
+  format = 'd'
   on_click 1 = 'exec systemctl start docker.service'
   on_click 3 = 'exec systemctl stop docker.service'
 }
 
 systemd networkd {
   unit = 'systemd-networkd.service'
-  format = 'N'
+  format = 'n'
   on_click 1 = 'exec systemctl start systemd-networkd.service'
   on_click 3 = 'exec systemctl stop systemd-networkd.service'
 }
 
 systemd wpa_supplicant {
   unit = 'wpa_supplicant@wlp2s0b1.service'
-  format = 'W'
+  format = 'wpa'
   on_click 1 = 'exec systemctl start wpa_supplicant@wlp2s0b1.service'
   on_click 3 = 'exec systemctl stop wpa_supplicant@wlp2s0b1.service'
+}
+
+systemd iwd {
+  unit = 'iwd.service'
+  format = 'iwd'
+  on_click 1 = 'exec systemctl start iwd.service'
+  on_click 3 = 'exec systemctl stop iwd.service'
 }
